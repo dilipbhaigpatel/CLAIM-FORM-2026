@@ -1,0 +1,1525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=yes">
+<title>Claim Form Part A — Ericson Insurance TPA</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   ROOT VARIABLES - LIGHTER COLORS
+============================================================ */
+:root{
+  --primary-light: #2e78b8;
+  --primary-dark:  #1a4f80;
+  --accent-light:  #f5c842;
+  --accent-dark:   #c9960d;
+  --blue:          #1a6faa;
+  --blueL:         #e8f2fc;
+  --line:          #adc4dc;
+  --bg:            #f0f5fb;
+  --green-hint:    #164e78;
+  --txt:           #131e2c;
+  --grey:          #4a5e72;
+  --r:             3px;
+  /* ── USER STYLE CONTROLS ── */
+  --user-color:    #131e2c;
+  --user-weight:   600;
+  --user-size:     12px;
+  --user-spacing:  0.3px;
+}
+
+/* ============================================================
+   PRINT PAGE — A4
+============================================================ */
+@page{ size:A4; margin:9mm 10mm 8mm 10mm; }
+
+/* ============================================================
+   SCREEN LAYOUT — responsive & centered
+============================================================ */
+*,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
+
+body{
+  font-family:'DM Sans',sans-serif;
+  font-size:12px;
+  color:var(--txt);
+  background:#b8c9de;
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+  padding:16px 8px;
+  line-height:1.5;
+  min-height:100vh;
+}
+
+.wrap{
+  width:100%;
+  max-width:820px;
+  background:#fff;
+  border-radius:7px;
+  box-shadow:0 12px 40px rgba(8,24,56,0.22);
+  overflow-x:hidden;
+}
+
+.sp+.sp{ border-top:5px solid #aabdd4; }
+
+/* ========== PAGE 1: INCREASED SPACING TO FILL BOTTOM ========== */
+.sp:first-child{
+  padding-top: 10px;   /* clean controlled spacing */
+  font-size: 10.8px;
+  line-height: 1.42;
+}
+
+.sp:first-child .fr{
+  margin-bottom: 10px;
+  gap: 8px;
+}
+
+.sp:first-child .sec{
+  margin-bottom: 12px;             /* more space between sections */
+}
+
+.sp:first-child .g2,
+.sp:first-child .g3,
+.sp:first-child .g4020,
+.sp:first-child .g303040,
+.sp:first-child .g204040{
+  gap: 10px;                       /* larger grid gaps */
+}
+
+.sp:first-child .inf{
+  height: 28px;                    /* taller inputs */
+}
+
+.sp:first-child .amt{
+  height: 28px;
+}
+
+.sp:first-child .db input{
+  height: 24px;
+  font-size: 10px;
+}
+
+.sp:first-child .hh{
+  height: 24px;
+  font-size: 10px;
+}
+
+.sp:first-child .fl{
+  font-size: 12px;
+}
+
+.sp:first-child .fh{
+  font-size: 10px;
+  letter-spacing: 0.3px;
+  margin-bottom: 3px;
+}
+
+/* ============================================================
+   RESPONSIVE TWEAKS FOR MOBILE (Samsung Z Fold 6)
+============================================================ */
+@media screen and (max-width: 900px){
+  body{ padding:8px 4px; font-size:9.5px; }
+  .sp:first-child{ padding-top:0.3in; font-size:10px; }
+  .wrap{ border-radius:5px; }
+  .hdr h1{ font-size:18px; }
+  .hdr{ padding:8px 10px 6px; }
+  .htop{ font-size:7px; }
+  .hsub{ font-size:7.5px; }
+  .hnote{ font-size:8.5px; }
+  .sec{ margin:5px 3px; }
+  .shd{ padding:5px 10px; font-size:10.5px; }
+  .bdg{ width:21px; height:21px; font-size:10.5px; }
+  .fr{ margin-bottom:6px; min-height:24px; flex-wrap:wrap; }
+  .fl{ font-size:9px; }
+  .inf{ height:24px; }
+  .inf input{ font-size:9px; }
+  .db input{ height:20px; font-size:8px; }
+  .dd, .mm, .yy, .hh{ width:22px; }
+  .amt{ height:24px; }
+  .amt input{ font-size:9px; }
+  .tbl{ font-size:8.5px; }
+  .ckl{ grid-template-columns:repeat(3,1fr); }
+  .ckl label{ font-size:10px; }
+  .decl{ font-size:9.5px; }
+  .sigb{ width:120px; height:42px; }
+  .fnotes{ font-size:9px; }
+  /* collapse wide grids on small screens */
+  .g2, .g3, .g303040{ grid-template-columns:1fr; }
+  .g4020{ grid-template-columns:1fr 1fr; }
+  .g204040{ grid-template-columns:1fr; }
+  .uhidbar{ grid-template-columns:1fr 1fr; }}
+
+/* ============================================================
+   HEADER - LIGHTER COLORS
+============================================================ */
+.hdr{
+  background:linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-light) 100%);
+  color:#fff;
+  text-align:center;
+  padding:12px 14px 10px;
+  border-bottom:4px solid var(--accent-light);
+  border-radius:7px 7px 0 0;
+  position:relative;
+  overflow:hidden;
+}
+.hdr::before{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background:repeating-linear-gradient(-45deg,transparent 0,transparent 24px,rgba(255,255,255,.07) 24px,rgba(255,255,255,.07) 48px);
+}
+.hdr>*{ position:relative; }
+.htop { font-size:8px;letter-spacing:2.5px;color:#c8dff5;text-transform:uppercase;font-weight:500;margin-bottom:3px; }
+.hdr h1{ font-family:'DM Serif Display',serif;font-size:22px;font-weight:400;letter-spacing:.8px; }
+.hsub { font-size:8.5px;color:#b8d4f0;font-style:italic;margin-top:2px; }
+.hnote{ font-size:9.5px;color:var(--accent-light);font-weight:700;margin-top:5px;letter-spacing:.4px; }
+
+.mhdr{
+  background:linear-gradient(135deg, var(--primary-dark), var(--primary-light));
+  color:#fff;text-align:center;
+  padding:6px 12px 5px;
+  border-bottom:3px solid var(--accent-light);
+}
+.mh1{ font-size:8px;letter-spacing:2px;color:#c8dff5;text-transform:uppercase;font-weight:500; }
+.mh2{ font-size:9px;color:var(--accent-light);font-weight:700;margin-top:2px; }
+
+/* ============================================================
+   ACTION BAR - expanded buttons
+============================================================ */
+.abar{
+  background:var(--bg);
+  padding:8px 12px;
+  display:flex;gap:8px;align-items:center;
+  flex-wrap:wrap;
+  border-bottom:1px solid var(--line);
+}
+.btn{
+  border:none;padding:9px 18px;
+  font-size:11.5px;font-weight:700;font-family:inherit;
+  border-radius:var(--r);cursor:pointer;color:#fff;
+  letter-spacing:.3px;
+  display:inline-flex;align-items:center;gap:6px;
+  transition:filter .14s,transform .1s;
+  flex:1 0 auto;
+  justify-content:center;
+}
+.btn:hover{ filter:brightness(1.1);transform:translateY(-1px); }
+.btn:active{ filter:brightness(.95);transform:none; }
+.bblue  { background:linear-gradient(135deg, var(--primary-dark), var(--primary-light)); }
+.bgreen { background:linear-gradient(135deg, #4a7a4a, #6b9b6b); }
+.bamber { background:linear-gradient(135deg, #b37b2e, #e5a23c); }
+.byellow{ background:linear-gradient(135deg, var(--accent-dark), var(--accent-light)); }
+.notebox{
+  flex:2 1 250px;display:flex;align-items:center;
+  border:1px solid var(--line);background:#fff;
+  font-size:11px;
+  border-radius:var(--r);padding:0 10px;height:36px;
+  box-shadow:0 1px 5px rgba(10,30,60,.08);
+}
+.notebox span{ font-size:9.5px;font-weight:700;color:var(--primary-dark);margin-right:8px;padding-right:8px;border-right:1px solid var(--line); }
+.notebox input{ flex:1;border:none;outline:none;font-size:10px;font-family:inherit; }
+
+/* ============================================================
+   USER REF LINE
+============================================================ */
+.refline{
+  background:linear-gradient(to right,#e8f0f9,#f5faff,#e8f0f9);
+  padding:6px 12px;
+  border-bottom:2px solid var(--primary-light);
+  display:flex;align-items:center;justify-content:center;
+}
+.refline input{
+  width:96%;border:none;border-bottom:1.5px dashed var(--primary-dark);
+  background:transparent;font-size:11px;font-weight:600;
+  padding:3px 6px;outline:none;text-transform:uppercase;
+  text-align:center;font-family:inherit;color:var(--primary-dark);
+}
+
+/* ============================================================
+   UHID BAR - WHITE BACKGROUND
+============================================================ */
+/* UHID BAR — 2×2 on screen so Date cell never overflows */
+.uhidbar{
+  display:grid;
+  grid-template-columns:1fr 1fr;   /* 2 cols on screen */
+  background:#fff;border-bottom:2px solid var(--accent-light);
+  overflow:hidden;
+}
+.ucell{
+  display:flex;align-items:center;gap:6px;
+  padding:7px 10px;border-right:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+/* remove bottom border on last two cells (bottom row) */
+.uhidbar .ucell:nth-child(3),
+.uhidbar .ucell:nth-child(4){ border-bottom:none; }
+.ucell:last-child{ border-right:none; }
+/* also remove right border on even cells (right column) */
+.uhidbar .ucell:nth-child(2){ border-right:none; }
+.ucell label{ font-size:10px;font-weight:700;color:var(--primary-dark);white-space:nowrap;text-transform:uppercase;letter-spacing:.3px; }
+.ucell input{
+  flex:1;min-width:0;border:none;
+  border-bottom:1px solid var(--line);
+  background:transparent;font-size:10px;font-family:inherit;
+  padding:2px 3px;outline:none;text-transform:uppercase;color:var(--txt);
+}
+.ucell input::placeholder{ color:rgba(0,0,0,.28); }
+.ucell .dg{ flex-wrap:nowrap; }
+
+/* ============================================================
+   SECTIONS
+============================================================ */
+.sec{
+  border:1px solid var(--line);
+  border-radius:var(--r);
+  box-shadow:0 1px 6px rgba(10,30,60,.08);
+  margin:8px 8px 10px;
+  overflow:hidden;
+}
+.shd{
+  background:linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-light) 100%);
+  color:#fff;padding:6px 10px;
+  font-weight:700;font-size:10px;
+  display:flex;align-items:center;gap:6px;letter-spacing:.3px;
+}
+.bdg{
+  background:var(--accent-light);color:var(--primary-dark);
+  width:20px;height:20px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:10px;font-weight:900;flex-shrink:0;
+}
+.sbody{ padding:9px 12px 10px;background:#fff;overflow-x:hidden; }
+
+/* ============================================================
+   GRIDS
+============================================================ */
+.g2      { display:grid;grid-template-columns:1fr 1fr;gap:8px; }
+.g3      { display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px; }
+.g4020   { display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:8px; }
+.g303040 { display:grid;grid-template-columns:1fr 1fr 1.4fr;gap:8px; }
+.g204040 { display:grid;grid-template-columns:20% 40% 40%;gap:6px;align-items:center; }
+.g2>*,.g3>*,.g4020>*,.g303040>*,.g204040>*{ min-width:0; }
+
+/* ============================================================
+   FIELD ELEMENTS (base, will be overridden on page 1)
+============================================================ */
+.fh{ color:var(--green-hint);font-size:7.5px;font-weight:600;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis; }
+.fw{ width:100%; }
+.fr{ display:flex;align-items:center;gap:5px;margin-bottom:6px;flex-wrap:wrap;min-height:26px; }
+.fl{ font-size:10px;color:var(--grey);white-space:nowrap;flex-shrink:0; }
+.fl b{ color:var(--primary-dark);font-weight:700; }
+
+.inf{
+  border:1px solid var(--line);background:var(--bg);
+  height:28px;display:flex;align-items:center;
+  border-radius:var(--r);flex:1;padding:0 4px;
+  transition:border-color .13s,box-shadow .13s;
+}
+.inf:focus-within{ border-color:var(--primary-light);box-shadow:0 0 0 2px rgba(106,165,208,.2);background:#fff; }
+.inf input{
+  width:100%;height:100%;border:none;outline:none;
+  padding:0 5px;font-size:12px;font-family:inherit;letter-spacing:0.3px;
+  font-weight:var(--user-weight);
+  color:var(--user-color);
+  text-align:left;
+  text-transform:uppercase;background:transparent;
+  line-height:1;vertical-align:middle;
+}
+.inf input[type=email]{ text-transform:lowercase; }
+
+/* ============================================================
+   DATE GROUP
+============================================================ */
+.dg{ display:flex;align-items:center;gap:2px; }
+.db{ display:flex;flex-direction:column;align-items:center; }
+.db input{
+  border:1px solid var(--line);
+  text-align:center;
+  font-size:11.5px;font-family:inherit;
+  font-weight:var(--user-weight);
+  color:var(--user-color);
+  padding:0;
+  border-radius:2px;outline:none;height:24px;background:var(--bg);
+  transition:border-color .12s;
+  vertical-align:middle;line-height:1;
+}
+.db input:focus{ border-color:var(--primary-light);background:#fff; }
+.dd{ width:26px; } .mm{ width:26px; } .yy{ width:42px; }
+.hh{
+  width:28px;border:1px solid var(--line);border-radius:2px;
+  text-align:center;outline:none;height:24px;background:var(--bg);
+  font-size:11.5px;font-family:inherit;
+  font-weight:var(--user-weight);
+  color:var(--user-color);
+  vertical-align:middle;line-height:1;
+}
+.dl{ font-size:8px;color:var(--grey);margin-top:1px; }
+.ds{ font-weight:700;color:var(--primary-dark);font-size:12px;margin:0 1px; }
+
+/* ============================================================
+   RADIO / CHECKBOX
+============================================================ */
+.rg{ display:flex;flex-wrap:wrap;gap:5px;align-items:center; }
+.rg label{ display:flex;align-items:center;gap:4px;font-size:11px;cursor:pointer;padding:2px 5px 2px 3px;border-radius:2px;transition:background .1s; }
+.rg label:hover{ background:var(--blueL); }
+.rg input[type=radio],
+.rg input[type=checkbox]{ width:12px;height:12px;accent-color:var(--accent-dark); }
+.otxt{ width:60px;border:none;border-bottom:1px solid var(--line);outline:none;font-size:11px;font-family:inherit;background:transparent; }
+
+/* ============================================================
+   AMOUNT
+============================================================ */
+.amt{
+  display:flex;
+  align-items:center;
+  border:1px solid var(--line);
+  border-radius:var(--r);
+  background:#fff;
+  height:30px;
+  overflow:hidden;
+  transition:border-color .13s;
+}
+.amt:focus-within{ border-color:var(--primary-light); }
+.apx{ background:#e5edf8;padding:0 8px;border-right:1px solid var(--line);font-weight:700;color:var(--primary-dark);height:100%;display:flex;align-items:center;font-size:10px; }
+.amt input{ flex:1;border:none;outline:none;padding:0 8px;font-size:12px;letter-spacing:0.3px;font-family:inherit;font-weight:var(--user-weight);text-align:right;background:transparent;height:100%;color:var(--user-color);vertical-align:middle; }
+
+/* ============================================================
+   TABLES
+============================================================ */
+.tbl{ width:100%;border-collapse:collapse;font-size:11px; }
+.tbl th{ background:linear-gradient(to bottom, var(--primary-dark), var(--primary-light));color:#fff;padding:5px 5px;font-size:10px;text-align:center;font-weight:600;letter-spacing:.2px; }
+.tbl td{ border:1px solid #c8d8e8;padding:4px 5px;vertical-align:middle; }
+.tbl tbody tr:nth-child(even) td{ background:#f4f9ff; }
+.tbl td input{ width:100%;border:none;outline:none;font-size:9.5px;font-family:inherit;font-weight:var(--user-weight);color:var(--user-color);background:transparent;text-transform:uppercase;padding:2px 5px;text-align:left; }
+.tbl .tr td{ background:linear-gradient(to right,#d5ebff,#e5f3ff);font-weight:700;border-top:2px solid var(--primary-light); }
+
+/* ── TABLE COLUMN TYPE CLASSES ── */
+/* base for all td inputs */
+.tbl td input{
+  width:100%;border:none;outline:none;
+  font-size:11px;letter-spacing:0.2px;font-family:inherit;
+  font-weight:var(--user-weight);
+  color:var(--user-color);
+  background:transparent;
+  text-transform:uppercase;
+  padding:2px 5px;
+}
+/* TEXT column — left aligned */
+.tc-txt{ text-align:left; }
+.tc-txt input{ text-align:left; }
+/* DATE column — centre aligned */
+.tc-dt{ text-align:center; }
+.tc-dt input{ text-align:center; }
+.tc-dt .dd,.tc-dt .mm,.tc-dt .yy{
+  font-weight:var(--user-weight);
+  color:var(--user-color);
+}
+/* AMOUNT column — right aligned, overrides all */
+.tc-amt{ text-align:right; }
+.tc-amt input{ text-align:right !important; }
+.tc-amt .amt input{ text-align:right !important; }
+/* Serial number column */
+.tc-sn{ text-align:center;font-weight:700; }
+.dbtn{ background:var(--accent-dark);color:#fff;border:none;width:18px;height:18px;border-radius:50%;cursor:pointer;font-size:13px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;line-height:1;transition:transform .1s; }
+.dbtn:hover{ background:#8c1410;transform:scale(1.1); }
+.abtn{ background:linear-gradient(135deg,#4a7a4a,#6b9b6b);color:#fff;border:none;padding:4px 12px;border-radius:3px;font-size:9px;font-weight:700;font-family:inherit;margin:4px 0 3px;cursor:pointer;transition:filter .13s,transform .1s; }
+.abtn:hover{ filter:brightness(1.1);transform:translateY(-1px); }
+
+/* ============================================================
+   CHECKLIST
+============================================================ */
+.ckl{ display:grid;grid-template-columns:repeat(4,1fr);gap:2px 6px;margin-top:4px;background:var(--bg);border:1px solid var(--line);border-radius:var(--r);padding:5px 7px; }
+.ckl label{ display:flex;align-items:center;gap:4px;font-size:9px;line-height:1.5;cursor:pointer;padding:2px 3px;border-radius:2px;transition:background .1s; }
+.ckl label:hover{ background:var(--blueL); }
+.ckl input[type=checkbox]{ accent-color:var(--accent-dark); }
+
+/* ============================================================
+   DECLARATION
+============================================================ */
+.decl{ border-left:3px solid var(--accent-light);background:linear-gradient(to right,#fffce6,#fffffb);padding:6px 9px;font-size:9px;line-height:1.5;border-radius:0 var(--r) var(--r) 0;margin-bottom:6px;color:#222d38; }
+.sigb{ border:1.5px solid var(--primary-dark);width:140px;height:48px;border-radius:var(--r);position:relative;background:#fafcff; }
+.sigl{ font-size:7px;color:#aaa;position:absolute;bottom:3px;left:0;right:0;text-align:center;font-style:italic; }
+
+/* ============================================================
+   FOOTER NOTES
+============================================================ */
+.fnotes{ display:flex;justify-content:space-between;padding:4px 10px;font-size:8.5px;border-top:1px dashed var(--line);margin:3px 6px 0;color:var(--grey); }
+.fnotes span{ font-weight:600;color:var(--primary-dark); }
+
+/* ============================================================
+   MISC UTILITIES
+============================================================ */
+.dvdr{ height:1px;background:linear-gradient(to right,transparent,var(--line),transparent);margin:5px 0; }
+.ctitle{ display:inline-flex;align-items:center;font-size:11.5px;color:var(--primary-dark);font-weight:700;margin:5px 0 4px;border-bottom:1.5px solid var(--primary-light);padding-bottom:2px;letter-spacing:.3px; }
+.phbox{ border:1px dashed var(--line);background:var(--bg);border-radius:var(--r);padding:5px 7px;margin-top:5px; }
+.stit{ font-weight:700;font-size:11.5px;color:var(--primary-dark);margin-bottom:4px; }
+
+/* ============================================================
+   STYLE BAR — always visible
+============================================================ */
+.spnl-bar{
+  background:linear-gradient(to right,#eef3fb,#e5ecf7);
+  border-bottom:2px solid var(--primary-light);
+  padding:7px 14px;
+  display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+  row-gap:6px;
+}
+.sbar-group{ display:flex;align-items:center;gap:5px;flex-shrink:0; }
+.sbar-label{ font-size:9px;font-weight:700;color:var(--primary-dark);white-space:nowrap; }
+.sbar-val{ font-size:9px;font-weight:800;color:var(--primary-dark);min-width:32px; }
+input[type=range].sbar-range{
+  -webkit-appearance:none;appearance:none;
+  width:100px;height:5px;border-radius:3px;outline:none;cursor:pointer;flex-shrink:0;
+  background:linear-gradient(to right,var(--primary-dark) var(--pct,57%),#cdd9e8 var(--pct,57%));
+}
+input[type=range].sbar-range::-webkit-slider-thumb{
+  -webkit-appearance:none;width:15px;height:15px;border-radius:50%;
+  background:var(--primary-dark);border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.25);cursor:pointer;
+}
+input[type=range].sbar-range::-moz-range-thumb{
+  width:13px;height:13px;border-radius:50%;background:var(--primary-dark);border:2px solid #fff;cursor:pointer;
+}
+input[type=range]::-webkit-slider-thumb{
+  -webkit-appearance:none;width:16px;height:16px;border-radius:50%;
+  background:#1a4f80;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.25);cursor:pointer;
+}
+input[type=range]::-moz-range-thumb{
+  width:14px;height:14px;border-radius:50%;background:#1a4f80;border:2px solid #fff;cursor:pointer;
+}
+.wbtn{
+  border:1.5px solid var(--line);border-radius:3px;padding:4px 8px;
+  font-family:inherit;font-size:9px;cursor:pointer;background:#f8fafd;
+  color:var(--grey);transition:all .12s;text-align:center;white-space:nowrap;
+}
+.wbtn:hover{ border-color:var(--primary-light);color:var(--primary-dark); }
+.wbtn.active{ background:var(--primary-dark);color:#fff;border-color:var(--primary-dark); }
+.sw{
+  width:20px;height:20px;border-radius:3px;cursor:pointer;
+  border:2px solid transparent;transition:transform .12s,border-color .12s;flex-shrink:0;
+}
+.sw:hover{ transform:scale(1.2); }
+.sw.active{ border-color:#000!important;transform:scale(1.1); }
+
+@media print{ .spnl-bar{ display:none!important; } }
+
+.pgbrk{ page-break-after:always;break-after:page; }
+.ph{ display:none!important; }
+
+/* ============================================================
+   PRINT MEDIA
+============================================================ */
+@media print{
+  *{ -webkit-print-color-adjust:exact!important;print-color-adjust:exact!important; }
+body{
+  background:#fff!important;
+  padding:0!important;
+  font-size:10.5px!important;
+  line-height:1.25!important;
+}
+  .wrap{ box-shadow:none!important;border-radius:0!important;overflow:visible!important;width:100%!important;max-width:100%!important; }
+  .sp+.sp{ border-top:none!important; }
+  .sp:first-child{ padding-top:0!important; font-size:8px!important; line-height:1.2!important; }
+  .abar,.btn,.abtn,.dbtn{ display:none!important; }
+  .hdr{ padding:5px 8px 4px!important;border-bottom-width:2px!important; }
+  .htop{ font-size:6.5px!important; }
+  .hdr h1{ font-size:16px!important; }
+  .hsub{ font-size:7px!important; }
+  .hnote{ font-size:8px!important; }
+  .mhdr{ padding:4px 8px 3px!important; }
+  .mh1{ font-size:6.5px!important; }
+  .mh2{ font-size:7px!important; }
+  .refline{ padding:3px 8px!important; }
+  .refline input{ font-size:9px!important; }
+  .uhidbar{ grid-template-columns:repeat(4,1fr)!important;border-bottom-width:1px!important; }
+  .ucell{ padding:3px 5px!important;border-bottom:none!important; }
+  .uhidbar .ucell:nth-child(2){ border-right:1px solid var(--line)!important; }
+  .ucell label{ font-size:7px!important; }
+  .ucell input{ font-size:8px!important; }
+  .sec{ margin:2px 2px!important; }
+  .shd{ padding:3px 6px!important;font-size:8px!important; }
+  .bdg{ width:16px!important;height:16px!important;font-size:8px!important; }
+  .sbody{ padding:3px 5px 4px!important; }
+  .fr{ margin-bottom:3px!important;min-height:18px!important; }
+  .inf{ height:18px!important; }
+  .inf input{ font-size:9.5px!important; }
+  .db input{ height:18px!important;font-size:9px!important; }
+  .hh{ height:18px!important;font-size:9px!important; }
+  .fl{ font-size:8px!important; }
+  .fh{ font-size:6px!important; }
+  .amt{ height:18px!important; }
+  .apx{ font-size:8px!important;padding:0 5px!important; }
+  .amt input{ font-size:9.5px!important; }
+  .tbl{ font-size:7px!important; }
+  .tbl th{ padding:3px 3px!important;font-size:8px!important; }
+  .tbl td{ padding:1px 2px!important; }
+  .tbl td input{ font-size:8.5px!important; }
+  .ckl{ grid-template-columns:repeat(5,1fr)!important;padding:2px 4px!important; }
+  .ckl label{ font-size:6.5px!important; }
+  .decl{ padding:3px 5px!important;font-size:7px!important; }
+  .sigb{ height:34px!important;width:110px!important; }
+  .fnotes{ padding:2px 5px!important;font-size:6.5px!important; }
+  .pgbrk{ page-break-after:always!important; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- ═══════════════════════════════════════════════════════
+     PAGE 1  ·  Sections A + B + C + D (buttons only here)
+═══════════════════════════════════════════════════════ -->
+<div class="sp">
+
+  <div class="hdr">
+    <div class="htop">Ericson Insurance TPA Pvt. Ltd. &nbsp;·&nbsp; Mumbai</div>
+    <h1>CLAIM FORM — PART A</h1>
+    <div class="hsub">TO BE FILLED BY THE INSURED &nbsp;|&nbsp; The issue of this Form is not to be taken as an admission of liability</div>
+    <div class="hnote">★ &nbsp; PLEASE FILL IN BLOCK CAPITAL LETTERS &nbsp; ★</div>
+  </div>
+
+  <!-- ACTION BAR -->
+  <div class="abar">
+    <button class="btn bblue"  onclick="printFilled()">&#128424; Print Filled</button>
+    <button class="btn bgreen" onclick="printBlank()">&#128203; Print Blank</button>
+    <button class="btn bamber" onclick="resetForm()">&#8634; Reset</button>
+    <button class="btn byellow" onclick="saveHTML()">&#128190; Save HTML</button>
+    <div class="notebox">
+      <span>Note</span>
+      <input type="text" >
+    </div>
+  </div>
+
+  <!-- STYLE BAR — always visible on screen -->
+  <div class="spnl-bar" id="styleBar">
+    <span style="font-size:9px;font-weight:800;color:var(--primary-dark);white-space:nowrap;flex-shrink:0;">&#127912; Colour:</span>
+    <div id="swatches" style="display:flex;flex-wrap:wrap;gap:4px;align-items:center;"></div>
+    <input type="color" id="cpick" value="#131e2c" oninput="applyColor(this.value)" style="width:28px;height:26px;border:1.5px solid var(--line);border-radius:3px;cursor:pointer;padding:1px;background:#fff;flex-shrink:0;">
+    <input type="text" id="chex" maxlength="7" placeholder="#131e2c" oninput="hexInput(this.value)" style="width:62px;border:1px solid var(--line);border-radius:3px;height:26px;padding:0 6px;font-size:9.5px;font-family:inherit;outline:none;flex-shrink:0;">
+    <span style="height:26px;width:1.5px;background:var(--line);flex-shrink:0;margin:0 4px;"></span>
+    <span style="font-size:9px;font-weight:800;color:var(--primary-dark);white-space:nowrap;flex-shrink:0;">Weight:</span>
+    <div id="wbtns" style="display:flex;gap:3px;">
+      <button class="wbtn" data-w="400" onclick="applyWeight('400',this)" style="font-weight:400;">Regular</button>
+      <button class="wbtn" data-w="500" onclick="applyWeight('500',this)" style="font-weight:500;">Medium</button>
+      <button class="wbtn active" data-w="600" onclick="applyWeight('600',this)" style="font-weight:600;">Semi-Bold</button>
+      <button class="wbtn" data-w="700" onclick="applyWeight('700',this)" style="font-weight:700;">Bold</button>
+      <button class="wbtn" data-w="800" onclick="applyWeight('800',this)" style="font-weight:800;">Extra Bold</button>
+    </div>
+    <span style="height:26px;width:1.5px;background:var(--line);flex-shrink:0;margin:0 4px;"></span>
+    <!-- Font Size slider -->
+    <div style="display:flex;align-items:center;gap:5px;flex-shrink:0;">
+      <span style="font-size:9px;font-weight:700;color:var(--primary-dark);white-space:nowrap;">&#128292; Size:</span>
+      <input type="range" id="fsSlider" min="8" max="18" step="0.5" value="12" oninput="applyFontSize(this.value)" style="-webkit-appearance:none;appearance:none;width:100px;height:6px;border-radius:3px;outline:none;cursor:pointer;flex-shrink:0;background:linear-gradient(to right,#1a4f80 40%,#cdd9e8 40%);">
+      <span id="fsVal" style="font-size:9px;font-weight:800;color:var(--primary-dark);min-width:28px;">12px</span>
+    </div>
+    <span style="height:26px;width:1.5px;background:var(--line);flex-shrink:0;margin:0 4px;"></span>
+    <!-- Letter Gap slider -->
+    <div style="display:flex;align-items:center;gap:5px;flex-shrink:0;">
+      <span style="font-size:9px;font-weight:700;color:var(--primary-dark);white-space:nowrap;">&#8596; Letter Gap:</span>
+      <input type="range" id="lsSlider" min="0" max="4" step="0.1" value="0.3" oninput="applyLetterSpacing(this.value)" style="-webkit-appearance:none;appearance:none;width:100px;height:6px;border-radius:3px;outline:none;cursor:pointer;flex-shrink:0;background:linear-gradient(to right,#1a4f80 7%,#cdd9e8 7%);">
+      <span id="lsVal" style="font-size:9px;font-weight:800;color:var(--primary-dark);min-width:34px;">0.3px</span>
+    </div>
+    <span style="height:26px;width:1.5px;background:var(--line);flex-shrink:0;margin:0 4px;"></span>
+    <div id="sprev" style="border:1px dashed var(--line);border-radius:3px;padding:4px 12px;background:#fff;font-size:12px;letter-spacing:0.3px;font-family:inherit;white-space:nowrap;color:#131e2c;font-weight:600;">Sample Text 123</div>
+    <span onclick="resetStyle()" style="font-size:8.5px;color:var(--primary-dark);cursor:pointer;text-decoration:underline;white-space:nowrap;flex-shrink:0;">&#8634; Reset</span>
+  </div>
+
+  <div class="refline">
+    <input type="text">
+  </div>
+
+  <!-- UHID BAR - WHITE BACKGROUND -->
+  <div class="uhidbar">
+    <div class="ucell"><label>UHID No.</label><input type="text" id="uhid" placeholder="—"></div>
+    <div class="ucell"><label>Claim Ref. No.</label><input type="text" id="claimRef" placeholder="—"></div>
+    <div class="ucell"><label>Sr. No.</label><input type="text" id="srNo" placeholder="—"></div>
+    <div class="ucell">
+      <label>Date</label>
+      <div class="dg">
+        <div class="db"><input class="dd" type="text" maxlength="2" data-num oninput="rn(this,2)"><span class="dl">DD</span></div>
+        <span class="ds">/</span>
+        <div class="db"><input class="mm" type="text" maxlength="2" data-num oninput="rn(this,2)"><span class="dl">MM</span></div>
+        <span class="ds">/</span>
+        <div class="db"><input class="yy" type="text" maxlength="4" data-num oninput="rn(this,4)"><span class="dl">YYYY</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- A -->
+  <div class="sec">
+    <div class="shd"><span class="bdg">A</span> DETAILS OF PRIMARY INSURED</div>
+    <div class="sbody">
+      <div class="g303040" style="margin-bottom:5px;">
+        <div class="fw"><div class="fh">a) Policy Number</div><div class="inf"><input type="text" id="pno"></div></div>
+        <div class="fw"><div class="fh">b) Sr. No. / Certificate No.</div><div class="inf"><input type="text" id="cno"></div></div>
+        <div class="fw"><div class="fh">c) Company TPA ID No.</div><div class="inf"><input type="text" id="tpa"></div></div>
+      </div>
+      <div style="margin-bottom:5px;">
+        <div class="fh">d) Full Name of Primary Insured (as per policy)</div>
+        <div class="inf"><input type="text" id="name"></div>
+      </div>
+      <div style="margin-bottom:5px;">
+        <div class="fh" style="margin-bottom:2px;">e) Address</div>
+        <div class="g4020">
+          <div class="fw"><div class="fh">Street / Area</div><div class="inf"><input type="text" id="addr"></div></div>
+          <div class="fw"><div class="fh">City</div><div class="inf"><input type="text" id="city"></div></div>
+          <div class="fw"><div class="fh">State</div><div class="inf"><input type="text" id="state"></div></div>
+          <div class="fw"><div class="fh">PIN Code</div><div class="inf"><input type="text" maxlength="6" data-num oninput="rn(this,6)" id="pin"></div></div>
+        </div>
+      </div>
+      <div class="ctitle">⚑ CONTACT DETAILS</div>
+      <div class="g204040" style="margin-bottom:4px;">
+        <div class="fl"><b>f)</b> Mobile No.</div>
+        <div class="fw"><div class="fh">Primary mobile (10 digits)</div><div class="inf"><input type="text" maxlength="10" data-num oninput="rn(this,10)" id="mob1"></div></div>
+        <div class="fw"><div class="fh">Alternate mobile</div><div class="inf"><input type="text" maxlength="10" data-num oninput="rn(this,10)" id="mob2"></div></div>
+      </div>
+      <div class="g204040">
+        <div class="fl"><b>g)</b> Email ID</div>
+        <div class="fw"><div class="fh">Primary email</div><div class="inf"><input type="email" id="em1"></div></div>
+        <div class="fw"><div class="fh">Alternate email</div><div class="inf"><input type="email" id="em2"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- B -->
+  <div class="sec">
+    <div class="shd"><span class="bdg">B</span> DETAILS OF INSURANCE HISTORY</div>
+    <div class="sbody">
+
+      <!-- Row 1: a) + b) -->
+      <div class="g2" style="margin-bottom:6px;">
+        <div>
+          <div class="fh" style="margin-bottom:3px;"><b>a)</b> Currently covered by any other Mediclaim / Health Insurance Policy?</div>
+          <div class="rg"><label><input type="radio" name="omc" value="yes"> Yes</label><label><input type="radio" name="omc" value="no" checked> No</label></div>
+        </div>
+        <div>
+          <div class="fh" style="margin-bottom:3px;"><b>b)</b> Date of commencement of first Insurance (without break)</div>
+          <div class="dg">
+            <div class="db"><input class="dd" type="text" maxlength="2" data-num><span class="dl">DD</span></div><span class="ds">/</span>
+            <div class="db"><input class="mm" type="text" maxlength="2" data-num><span class="dl">MM</span></div><span class="ds">/</span>
+            <div class="db"><input class="yy" type="text" maxlength="4" data-num><span class="dl">YYYY</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 2: c) company + policy no + sum insured -->
+      <div class="g303040" style="margin-bottom:6px;">
+        <div class="fw">
+          <div class="fh"><b>c)</b> If Yes (a), Current Insurance Company Name</div>
+          <div class="inf"><input type="text"></div>
+        </div>
+        <div class="fw">
+          <div class="fh">Policy No.</div>
+          <div class="inf"><input type="text"></div>
+        </div>
+        <div class="fw">
+          <div class="fh">Sum Insured (₹)</div>
+          <div class="amt"><span class="apx">₹</span><input type="text" data-num onblur="fa(this)" oninput="ca(this)"></div>
+        </div>
+      </div>
+
+      <!-- Row 3: d) + hospitalization date -->
+      <div class="g2" style="margin-bottom:6px;">
+        <div>
+          <div class="fh" style="margin-bottom:3px;"><b>d)</b> Have you been hospitalised in the last 4 years since inception of contract?</div>
+          <div class="rg"><label><input type="radio" name="hl4" value="yes"> Yes</label><label><input type="radio" name="hl4" value="no" checked> No</label></div>
+        </div>
+        <div>
+          <div class="fh" style="margin-bottom:3px;">If Yes (d), Date of Hospitalisation</div>
+          <div class="dg">
+            <div class="db"><input class="dd" type="text" maxlength="2" data-num><span class="dl">DD</span></div><span class="ds">/</span>
+            <div class="db"><input class="mm" type="text" maxlength="2" data-num><span class="dl">MM</span></div><span class="ds">/</span>
+            <div class="db"><input class="yy" type="text" maxlength="4" data-num><span class="dl">YYYY</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 4: diagnosis + e) previous -->
+      <div class="g2" style="margin-bottom:6px;">
+        <div class="fw">
+          <div class="fh">Diagnosis</div>
+          <div class="inf"><input type="text"></div>
+        </div>
+        <div>
+          <div class="fh" style="margin-bottom:3px;"><b>e)</b> Previously covered by any other Mediclaim / Health Insurance?</div>
+          <div class="rg"><label><input type="radio" name="pvc" value="yes"> Yes</label><label><input type="radio" name="pvc" value="no" checked> No</label></div>
+        </div>
+      </div>
+
+      <!-- Row 5: f) previous company -->
+      <div class="fw">
+        <div class="fh"><b>f)</b> If Yes (e), Previous Insurance Company Name</div>
+        <div class="inf"><input type="text"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- C -->
+  <div class="sec">
+    <div class="shd"><span class="bdg">C</span> DETAILS OF INSURED PERSON HOSPITALIZED</div>
+    <div class="sbody">
+
+      <!-- a) Full Name of Patient -->
+      <div style="margin-bottom:6px;">
+        <div class="fh">a) Full Name of Patient</div>
+        <div class="inf"><input type="text" id="patname"></div>
+      </div>
+
+      <!-- b) Gender  c) Age -->
+      <div class="fr" style="align-items:flex-end;gap:16px;margin-bottom:6px;flex-wrap:wrap;">
+        <div style="flex-shrink:0;">
+          <div class="fh">b) Gender</div>
+          <div class="rg">
+            <label><input type="radio" name="gen" value="M"> Male</label>
+            <label><input type="radio" name="gen" value="F"> Female</label>
+          </div>
+        </div>
+        <div style="flex-shrink:0;">
+          <div class="fh">c) Age</div>
+          <div class="dg" style="gap:5px;">
+            <input class="dd" type="text" maxlength="2" data-num style="border:1px solid var(--line);border-radius:2px;text-align:center;outline:none;height:22px;font-family:inherit;font-size:10px;font-weight:var(--user-weight);color:var(--user-color);background:var(--bg);">
+            <span class="fl">Yrs</span>
+            <input class="dd" type="text" maxlength="2" data-num style="border:1px solid var(--line);border-radius:2px;text-align:center;outline:none;height:22px;font-family:inherit;font-size:10px;font-weight:var(--user-weight);color:var(--user-color);background:var(--bg);">
+            <span class="fl">Months</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- d) DOB -->
+      <div style="margin-bottom:6px;">
+        <div class="fh">d) Date of Birth</div>
+        <div class="dg">
+          <div class="db"><input class="dd" type="text" maxlength="2" data-num><span class="dl">DD</span></div><span class="ds">/</span>
+          <div class="db"><input class="mm" type="text" maxlength="2" data-num><span class="dl">MM</span></div><span class="ds">/</span>
+          <div class="db"><input class="yy" type="text" maxlength="4" data-num><span class="dl">YYYY</span></div>
+        </div>
+      </div>
+
+      <!-- e) Relationship to Primary Insured -->
+      <div style="margin-bottom:6px;">
+        <div class="fh">e) Relationship to Primary Insured</div>
+        <div class="rg">
+          <label><input type="radio" name="rel" value="Self"> Self</label>
+          <label><input type="radio" name="rel" value="Spouse"> Spouse</label>
+          <label><input type="radio" name="rel" value="Child"> Child</label>
+          <label><input type="radio" name="rel" value="Father"> Father</label>
+          <label><input type="radio" name="rel" value="Mother"> Mother</label>
+          <label><input type="radio" name="rel" value="Other"> Other</label>
+          <input type="text" class="otxt" placeholder="specify">
+        </div>
+      </div>
+
+      <!-- f) Occupation -->
+      <div style="margin-bottom:7px;">
+        <div class="fh">f) Occupation</div>
+        <div class="rg">
+          <label><input type="radio" name="occ" value="Service"> Service</label>
+          <label><input type="radio" name="occ" value="Self Emp"> Self Emp.</label>
+          <label><input type="radio" name="occ" value="Home Maker"> Home Maker</label>
+          <label><input type="radio" name="occ" value="Student"> Student</label>
+          <label><input type="radio" name="occ" value="Retired"> Retired</label>
+          <label><input type="radio" name="occ" value="Other"> Other</label>
+          <input type="text" class="otxt" placeholder="specify">
+        </div>
+      </div>
+
+      <!-- g) Address single line 50/50 + City/State/PIN -->
+      <div>
+        <div class="fh" style="margin-bottom:3px;">g) Address (if different from Section A)</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:4px;">
+          <div class="inf"><input type="text"></div>
+          <div class="inf"><input type="text"></div>
+        </div>
+        <div class="g303040">
+          <div class="fw"><div class="fh">City</div><div class="inf"><input type="text"></div></div>
+          <div class="fw"><div class="fh">State</div><div class="inf"><input type="text"></div></div>
+          <div class="fw"><div class="fh">PIN Code</div><div class="inf"><input type="text" maxlength="6" data-num oninput="rn(this,6)"></div></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- D -->
+  <div class="sec">
+    <div class="shd"><span class="bdg">D</span> DETAILS OF HOSPITALIZATION</div>
+    <div class="sbody">
+      <div class="g2">
+        <div>
+          <div class="fr"><span class="fl"><b>a)</b> Hospital Name</span><div class="fw"><div class="fh">Full hospital / nursing home name</div><div class="inf"><input type="text"></div></div></div>
+          <div class="fr"><span class="fl"><b>b)</b> Room Category</span><div class="rg"><label><input type="radio" name="rc" value="Day Care"> Day Care</label><label><input type="radio" name="rc" value="Single"> Single</label><label><input type="radio" name="rc" value="Twin"> Twin</label><label><input type="radio" name="rc" value="3+"> 3+ Beds</label></div></div>
+          <div class="fr"><span class="fl"><b>c)</b> Hospitalisation due to</span><div class="rg"><label><input type="radio" name="hd" value="Injury"> Injury</label><label><input type="radio" name="hd" value="Illness"> Illness</label><label><input type="radio" name="hd" value="Maternity"> Maternity</label></div></div>
+          <div class="fr">
+            <span class="fl"><b>d)</b> Date — Injury / First Detected</span>
+            <div class="dg"><div class="db"><input class="dd" type="text" maxlength="2" data-num><span class="dl">DD</span></div><span class="ds">/</span><div class="db"><input class="mm" type="text" maxlength="2" data-num><span class="dl">MM</span></div><span class="ds">/</span><div class="db"><input class="yy" type="text" maxlength="4" data-num><span class="dl">YYYY</span></div></div>
+          </div>
+          <div class="fr"><span class="fl"><b>k)</b> System of Medicine</span><div class="fw"><div class="fh">Allopathy / Ayurveda / Homoeopathy / Other</div><div class="inf"><input type="text"></div></div></div>
+        </div>
+        <div>
+          <div class="fr">
+            <span class="fl"><b>e)</b> Date of Admission</span>
+            <div class="dg"><div class="db"><input class="dd" type="text" maxlength="2" data-num><span class="dl">DD</span></div><span class="ds">/</span><div class="db"><input class="mm" type="text" maxlength="2" data-num><span class="dl">MM</span></div><span class="ds">/</span><div class="db"><input class="yy" type="text" maxlength="4" data-num><span class="dl">YYYY</span></div></div>
+            <span class="fl" style="margin-left:5px;"><b>f)</b> Time</span>
+            <input class="hh" type="text" maxlength="2" data-num><span class="ds">:</span><input class="hh" type="text" maxlength="2" data-num>
+          </div>
+          <div class="fr">
+            <span class="fl"><b>g)</b> Date of Discharge</span>
+            <div class="dg"><div class="db"><input class="dd" type="text" maxlength="2" data-num><span class="dl">DD</span></div><span class="ds">/</span><div class="db"><input class="mm" type="text" maxlength="2" data-num><span class="dl">MM</span></div><span class="ds">/</span><div class="db"><input class="yy" type="text" maxlength="4" data-num><span class="dl">YYYY</span></div></div>
+            <span class="fl" style="margin-left:5px;"><b>h)</b> Time</span>
+            <input class="hh" type="text" maxlength="2" data-num><span class="ds">:</span><input class="hh" type="text" maxlength="2" data-num>
+          </div>
+          <div class="fr"><span class="fl"><b>i)</b> If Injury, cause</span><div class="rg"><label><input type="radio" name="inj" value="self"> Self inflicted</label><label><input type="radio" name="inj" value="rta"> Road traffic accident</label><label><input type="radio" name="inj" value="sub"> Substance / alcohol</label></div></div>
+          <div class="fr"><span class="fl"><b>j)</b> Medico-Legal</span><div class="rg"><label><input type="radio" name="mlc" value="yes"> Yes</label><label><input type="radio" name="mlc" value="no" checked> No</label></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div><!-- /sp1 -->
+
+<div class="pgbrk"></div>
+
+<!-- ═══════════════════════════════════════════════════════
+     PAGE 2  ·  Sections E + F + G + H (NO BUTTONS)
+═══════════════════════════════════════════════════════ -->
+<div class="sp" style="font-size:10px; line-height:1.3;">
+
+  <div class="mhdr">
+    <div class="mh1">Ericson Insurance TPA — Claim Form Part A &nbsp;·&nbsp; Page 2 of 2</div>
+    <div class="mh2">★ PLEASE FILL IN BLOCK CAPITAL LETTERS ★</div>
+  </div>
+
+  <!-- E -->
+  <div class="sec">
+    <div class="shd"><span class="bdg">E</span> DETAILS OF CLAIM</div>
+    <div class="sbody">
+      <div class="g2">
+        <div>
+          <div class="stit">a) Details of the Treatment Expenses Claimed</div>
+          <table class="tbl" id="expT">
+            <thead><tr><th>Description</th><th style="width:88px;">Amount (₹)</th><th style="width:18px;"></th></tr></thead>
+            <tbody id="expB"></tbody>
+            <tfoot><tr class="tr"><td class="tc-amt" style="font-weight:700;">TOTAL</td><td class="tc-amt"><div class="amt"><span class="apx">₹</span><input type="text" id="expTot" readonly style="font-weight:700;"></div></td><td></td></tr></tfoot>
+          </table>
+          <button class="abtn" onclick="addE()">+ Add Expense</button>
+          <div class="phbox">
+            <div class="fr" style="margin-bottom:0;gap:4px;flex-wrap:wrap;">
+              <span class="fl"><b>b)</b> Pre-hosp:</span>
+              <input type="text" maxlength="3" data-num style="width:26px;border:1px solid var(--line);border-radius:2px;text-align:center;outline:none;height:20px;font-size:9px;font-family:inherit;background:var(--bg);">
+              <span class="fl">days &nbsp; Post-hosp:</span>
+              <input type="text" maxlength="3" data-num style="width:26px;border:1px solid var(--line);border-radius:2px;text-align:center;outline:none;height:20px;font-size:9px;font-family:inherit;background:var(--bg);">
+              <span class="fl">days &nbsp; Domiciliary?</span>
+              <div class="rg" style="gap:3px;"><label><input type="radio" name="dom" value="yes"> Yes</label><label><input type="radio" name="dom" value="no" checked> No</label></div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="stit">c) Details of Lump Sum / Cash Benefits Claimed</div>
+          <table class="tbl" id="lsT">
+            <thead><tr><th>Description</th><th style="width:88px;">Amount (₹)</th><th style="width:18px;"></th></tr></thead>
+            <tbody id="lsB"></tbody>
+            <tfoot><tr class="tr"><td class="tc-amt" style="font-weight:700;">TOTAL</td><td class="tc-amt"><div class="amt"><span class="apx">₹</span><input type="text" id="lsTot" readonly style="font-weight:700;"></div></td><td></td></tr></tfoot>
+          </table>
+          <button class="abtn" onclick="addL()">+ Add Benefit</button>
+        </div>
+      </div>
+      <div class="dvdr" style="margin:5px 0 4px;"></div>
+      <div class="stit">Claim Documents Submitted — Check List</div>
+      <div class="ckl">
+        <label><input type="checkbox"> Claim form (signed)</label>
+        <label><input type="checkbox"> Claim intimation copy</label>
+        <label><input type="checkbox"> Hospital Main Bill</label>
+        <label><input type="checkbox"> Hospital Break-up Bill</label>
+        <label><input type="checkbox"> Bill Payment Receipt</label>
+        <label><input type="checkbox"> Discharge Summary</label>
+        <label><input type="checkbox"> Pharmacy Bill</label>
+        <label><input type="checkbox"> OT Notes</label>
+        <label><input type="checkbox"> ECG</label>
+        <label><input type="checkbox"> Investigation Request</label>
+        <label><input type="checkbox"> Reports (CT/MRI/USG/HPE)</label>
+        <label><input type="checkbox"> Doctor's Prescriptions</label>
+        <label><input type="checkbox"> Indoor Case Papers</label>
+        <label><input type="checkbox"> Cancelled Cheque</label>
+        <label><input type="checkbox"> ID Proof (Aadhaar &amp; PAN)</label>
+        <label><input type="checkbox"> Others</label>
+      </div>
+    </div>
+  </div>
+
+  <!-- F -->
+  <div class="sec">
+    <div class="shd"><span class="bdg">F</span> DETAILS OF BILLS ENCLOSED</div>
+    <div class="sbody">
+      <table class="tbl" id="billsT">
+        <thead>
+          <tr>
+            <th style="width:22px;">Sl.</th>
+            <th class="tc-txt" style="width:90px;">Bill No.</th>
+            <th class="tc-dt"  style="width:78px;">Date</th>
+            <th class="tc-txt">Issued By</th>
+            <th class="tc-txt">Purpose / Description</th>
+            <th class="tc-amt" style="width:100px;">Amount (₹)</th>
+            <th style="width:18px;"></th>
+          </tr>
+        </thead>
+        <tbody id="billsB"></tbody>
+        <tfoot>
+          <tr class="tr">
+            <td colspan="5" class="tc-amt" style="font-weight:700;">TOTAL BILLS AMOUNT</td>
+            <td class="tc-amt"><div class="amt"><span class="apx">₹</span><input type="text" id="billsTot" readonly style="font-weight:700;"></div></td>
+            <td></td>
+          </tr>
+        </tfoot>
+      </table>
+      <button class="abtn" onclick="addB()">+ Add Bill</button>
+
+    </div>
+  </div>
+
+  <!-- G -->
+  <div class="sec">
+    <div class="shd"><span class="bdg">G</span> BANK ACCOUNT DETAILS (PRIMARY INSURED)</div>
+    <div class="sbody">
+      <div class="g2">
+        <div>
+          <div class="fr"><span class="fl"><b>a)</b> PAN</span><div class="fw"><div class="fh">Permanent Account Number (10 chars)</div><div class="inf"><input type="text" maxlength="10"></div></div></div>
+          <div class="fr"><span class="fl"><b>b)</b> Account No.</span><div class="fw"><div class="fh">Bank account number (up to 18 digits)</div><div class="inf"><input type="text" maxlength="18" data-num oninput="rn(this,18)"></div></div></div>
+          <div class="fr"><span class="fl"><b>c)</b> Account Type</span><div class="rg"><label><input type="radio" name="at" value="savings"> Savings</label><label><input type="radio" name="at" value="current"> Current</label><label><input type="radio" name="at" value="other"> Other</label></div></div>
+        </div>
+        <div>
+          <div class="fr"><span class="fl"><b>d)</b> Bank &amp; Branch</span><div class="fw"><div class="fh">Bank name and branch name</div><div class="inf"><input type="text"></div></div></div>
+          <div class="fr"><span class="fl"><b>e)</b> IFSC Code</span><div class="fw"><div class="fh">IFSC code (11 characters)</div><div class="inf"><input type="text" maxlength="11"></div></div></div>
+          <div class="fr"><span class="fl"><b>f)</b> Cheque / DD To</span><div class="fw"><div class="fh">Name payable on cheque</div><div class="inf"><input type="text"></div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- H -->
+  <div class="sec">
+    <div class="shd"><span class="bdg">H</span> DECLARATION BY THE INSURED</div>
+    <div class="sbody">
+      <div class="decl">
+        I hereby declare that the information furnished above is true, correct and complete to the best of my knowledge and belief. I understand that if any false or fraudulent statement is made, or if any material information is suppressed or concealed, my claim shall be forfeited and the policy shall stand cancelled. I authorise the TPA / Insurer and their representatives to seek all necessary medical information from any hospital, clinic, doctor or medical practitioner who has attended to or treated the patient. I confirm that I have enclosed all bills / invoices in relation to this claim and undertake not to make any supplementary claim in respect of expenses already included herein, except for pre- and post-hospitalisation expenses as permitted under the policy.
+      </div>
+
+      <div style="display:grid;grid-template-columns:auto 1fr auto;align-items:end;gap:8px;margin-top:2px;">
+        <div>
+          <div class="fl" style="margin-bottom:2px;"><b>Date</b></div>
+          <div class="dg">
+            <div class="db"><input class="dd" type="text" maxlength="2" data-num><span class="dl">DD</span></div><span class="ds">/</span>
+            <div class="db"><input class="mm" type="text" maxlength="2" data-num><span class="dl">MM</span></div><span class="ds">/</span>
+            <div class="db"><input class="yy" type="text" maxlength="4" data-num><span class="dl">YYYY</span></div>
+          </div>
+        </div>
+        <div>
+          <div class="fl" style="margin-bottom:2px;"><b>Place of Signing</b></div>
+          <div class="fw"><div class="inf"><input type="text"></div></div>
+        </div>
+        <div style="text-align:center;">
+          <div class="fl" style="font-size:8.5px;margin-bottom:2px;"><b>Signature / Thumb Impression</b></div>
+          <div class="sigb"><div class="sigl">Authorised Signatory</div></div>
+        </div>
+      </div>
+
+      <!-- Office use -->
+      <div style="margin-top:10px;border:1px dashed var(--line);border-radius:var(--r);padding:5px 7px;background:var(--bg);">
+        <div class="stit" style="color:var(--grey);font-size:8px;margin-bottom:4px;">For Office Use Only</div>
+        <div class="g3" style="gap:6px;">
+          <div><div class="fh">Received By</div><div class="inf" style="background:#fff;"><input type="text"></div></div>
+          <div>
+            <div class="fh">Date Received</div>
+            <div class="dg">
+              <div class="db"><input class="dd" type="text" maxlength="2" data-num><span class="dl">DD</span></div><span class="ds">/</span>
+              <div class="db"><input class="mm" type="text" maxlength="2" data-num><span class="dl">MM</span></div><span class="ds">/</span>
+              <div class="db"><input class="yy" type="text" maxlength="4" data-num><span class="dl">YYYY</span></div>
+            </div>
+          </div>
+          <div><div class="fh">Acknowledgement No.</div><div class="inf" style="background:#fff;"><input type="text"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+ 
+</div><!-- /sp2 -->
+
+</div><!-- /.wrap -->
+
+<script>
+/* ── UTILS ── */
+function rn(e,m){e.value=e.value.replace(/\D/g,'').substring(0,m);}
+function ca(e){e.value=e.value.replace(/[^\d.]/g,'');}
+function fa(e){let v=e.value.replace(/,/g,'').replace(/[^\d.]/g,'');if(v&&!isNaN(parseFloat(v)))e.value=parseFloat(v).toLocaleString('en-IN',{minimumFractionDigits:2,maximumFractionDigits:2});}
+function pa(s){return parseFloat((s||'').replace(/,/g,''))||0;}
+function st(id,v){let e=document.getElementById(id);if(e)e.value=v.toLocaleString('en-IN',{minimumFractionDigits:2,maximumFractionDigits:2});}
+
+/* ── AUTO UPPERCASE ── */
+function uc(ctx){
+  (ctx||document).querySelectorAll('input[type=text]:not([data-num]),textarea').forEach(i=>{
+    if(i._u)return;i._u=1;
+    i.addEventListener('input',function(){
+      let s=this.selectionStart,e=this.selectionEnd,u=this.value.toUpperCase();
+      if(this.value!==u){this.value=u;this.setSelectionRange(s,e);}
+    });
+  });
+}
+
+/* ── TABLE ROW BUILDERS ── */
+function addE(d=''){
+  let tr=document.createElement('tr');
+  tr.innerHTML=`<td class="tc-txt"><input type="text" value="${d}"></td>
+    <td class="tc-amt"><div class="amt"><span class="apx">₹</span><input type="text" data-num onblur="fa(this);ce();" oninput="ca(this)" class="ea"></div></td>
+    <td><button class="dbtn" onclick="dr(this,ce)">×</button></td>`;
+  document.getElementById('expB').appendChild(tr);uc(tr);ce();stampInputStyles();
+}
+function addL(d=''){
+  let tr=document.createElement('tr');
+  tr.innerHTML=`<td class="tc-txt"><input type="text" value="${d}"></td>
+    <td class="tc-amt"><div class="amt"><span class="apx">₹</span><input type="text" data-num onblur="fa(this);cl();" oninput="ca(this)" class="la"></div></td>
+    <td><button class="dbtn" onclick="dr(this,cl)">×</button></td>`;
+  document.getElementById('lsB').appendChild(tr);uc(tr);cl();stampInputStyles();
+}
+function addB(d=''){
+  let di='style="border:1px solid var(--line);border-radius:2px;text-align:center;outline:none;height:20px;background:transparent;font-family:inherit;font-size:9px;font-weight:var(--user-weight);color:var(--user-color);width:';
+  let tr=document.createElement('tr');
+  tr.innerHTML=`<td class="tc-sn sn">-</td>
+    <td class="tc-txt"><input type="text"></td>
+    <td class="tc-dt" style="padding:2px 3px;"><div style="display:flex;gap:1px;align-items:center;justify-content:center;">
+      <input type="text" placeholder="DD" maxlength="2" data-num oninput="rn(this,2)" class="dd" ${di}24px;">
+      <span style="font-size:9px;font-weight:700;">/</span>
+      <input type="text" placeholder="MM" maxlength="2" data-num oninput="rn(this,2)" class="mm" ${di}24px;">
+      <span style="font-size:9px;font-weight:700;">/</span>
+      <input type="text" placeholder="YY" maxlength="2" data-num oninput="rn(this,2)" class="yy" ${di}28px;">
+    </div></td>
+    <td class="tc-txt"><input type="text"></td>
+    <td class="tc-txt"><input type="text" value="${d}"></td>
+    <td class="tc-amt"><div class="amt"><span class="apx">₹</span><input type="text" data-num onblur="fa(this);cb();" oninput="ca(this)" class="ba"></div></td>
+    <td><button class="dbtn" onclick="dr(this,cb)">×</button></td>`;
+  document.getElementById('billsB').appendChild(tr);uc(tr);rn2();cb();stampInputStyles();
+}
+function dr(b,fn){b.closest('tr').remove();if(fn)fn();rn2();}
+function rn2(){document.querySelectorAll('#billsB tr .sn').forEach((e,i)=>e.textContent=i+1);}
+function ce(){let s=0;document.querySelectorAll('.ea').forEach(e=>s+=pa(e.value));st('expTot',s);}
+function cl(){let s=0;document.querySelectorAll('.la').forEach(e=>s+=pa(e.value));st('lsTot',s);}
+function cb(){let s=0;document.querySelectorAll('.ba').forEach(e=>s+=pa(e.value));st('billsTot',s);}
+
+/* ── FILENAME ── */
+function getInitials(){
+  // Patient name from Section C; fallback to primary insured name
+  let nm=(document.getElementById('patname')?.value||document.getElementById('name')?.value||'').trim();
+  if(!nm) return 'XX';
+  return nm.split(/\s+/).map(w=>w[0]).join('').toUpperCase().substring(0,3)||'XX';
+}
+function getStamp(){
+  let n=new Date(),p=x=>String(x).padStart(2,'0');
+  return `${n.getFullYear()}${p(n.getMonth()+1)}${p(n.getDate())}_${p(n.getHours())}${p(n.getMinutes())}`;
+}
+function getID(){
+  let r=(document.getElementById('claimRef')?.value||'').replace(/\s/g,'');
+  return r||'000000';
+}
+/* ── HTML VERSION COUNTER (persists in localStorage) ── */
+function getHTMLVer(){
+  try{
+    let v=parseInt(localStorage.getItem('cf_html_ver')||'0')+1;
+    localStorage.setItem('cf_html_ver', v);
+    return String(v).padStart(3,'0');
+  }catch(e){ return '001'; }
+}
+function peekHTMLVer(){
+  try{ return parseInt(localStorage.getItem('cf_html_ver')||'0'); }catch(e){ return 0; }
+}
+
+function fn(mode){
+  let ini=getInitials(), id=getID(), dt=getStamp();
+  // Unique descriptive names for each output type:
+  // Filled PDF  : CF_INITIALS_ClaimRef_FILLED_YYYYMMDD_HHMM.pdf
+  // Blank PDF   : CF_INITIALS_BLANK_YYYYMMDD_HHMM.pdf
+  // HTML Source : CF_INITIALS_ClaimRef_SOURCE_YYYYMMDD_HHMM.html
+  if(mode==='blank')  return `CF_${ini}_BLANK_${dt}.pdf`;
+  if(mode==='html')   return `CF_${ini}_${id}_SOURCE_v${getHTMLVer()}_${dt}.html`;
+  return `CF_${ini}_${id}_FILLED_${dt}.pdf`;
+}
+
+/* ── DATE FIELD AUTO-ADVANCE ── */
+function setupDateNav(){
+  // Find all date/time small inputs across the whole form
+  document.addEventListener('keydown', function(e){
+    let t=e.target;
+    if(!t.matches('.dd,.mm,.yy,.hh')) return;
+    let ml=parseInt(t.getAttribute('maxlength')||'4');
+    let isNum = e.key>='0'&&e.key<='9';
+    // After typing fills the box, advance forward
+    if(isNum && t.value.length>=ml-1){
+      // schedule after the keystroke is processed
+      setTimeout(()=>{
+        if(t.value.length>=ml) advanceDateFocus(t, 1);
+      }, 0);
+    }
+    // Arrow right / Tab → advance
+    if(e.key==='ArrowRight'){
+      e.preventDefault();
+      if(t.selectionStart>=t.value.length) advanceDateFocus(t, 1);
+    }
+    // Arrow left / Shift+Tab → go back
+    if(e.key==='ArrowLeft'){
+      if(t.selectionStart<=0) { e.preventDefault(); advanceDateFocus(t, -1); }
+    }
+  });
+  // Also auto-advance on oninput if already full
+  document.addEventListener('input', function(e){
+    let t=e.target;
+    if(!t.matches('.dd,.mm,.yy,.hh')) return;
+    let ml=parseInt(t.getAttribute('maxlength')||'4');
+    if(t.value.length>=ml) advanceDateFocus(t, 1);
+  });
+}
+function advanceDateFocus(el, dir){
+  // Collect all small date inputs in document order
+  let all=Array.from(document.querySelectorAll('.dd,.mm,.yy,.hh'));
+  let idx=all.indexOf(el);
+  let next=all[idx+dir];
+  if(next){ next.focus(); next.select(); }
+}
+
+/* ── SAVE HTML ── */
+function saveHTML(){
+  let html = document.documentElement.outerHTML;
+  let blob = new Blob([html], {type: 'text/html'});
+  let a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = fn('html');
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+
+/* ── PRINT ── */
+let pm='n',sv=[];
+function printFilled(){
+  pm='f';
+  document.title=fn('filled');
+  window.print();
+}
+function printBlank(){
+  pm='b';
+  document.querySelectorAll('#billsB tr').forEach(r=>{
+    let amt=r.querySelector('.ba')?.value;
+    if(!amt||pa(amt)===0) r.classList.add('ph');
+  });
+  document.querySelectorAll('#expB tr, #lsB tr').forEach(r=>{
+    let amt=r.querySelector('.ea,.la')?.value;
+    if(!amt||pa(amt)===0) r.classList.add('ph');
+  });
+  document.title=fn('blank');
+  window.print();
+}
+
+/* ── PRINT COLOUR INJECTION — writes real values before print ── */
+var _pstyle=null;
+function injectPrintStyle(){
+  let col=getComputedStyle(document.documentElement).getPropertyValue('--user-color').trim()||'#131e2c';
+  let wt =getComputedStyle(document.documentElement).getPropertyValue('--user-weight').trim()||'600';
+  if(!_pstyle){_pstyle=document.createElement('style');_pstyle.id='_pstyle';document.head.appendChild(_pstyle);}
+  let _fs=getComputedStyle(document.documentElement).getPropertyValue('--user-size').trim()||'12px';
+  let _ls=getComputedStyle(document.documentElement).getPropertyValue('--user-spacing').trim()||'0.3px';
+  _pstyle.textContent='.inf input,.amt input,.db input,.hh,.tbl td input{color:'+col+'!important;font-weight:'+wt+'!important;font-size:'+_fs+'!important;letter-spacing:'+_ls+'!important;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;}';
+}
+function removePrintStyle(){if(_pstyle)_pstyle.textContent='';}
+
+window.addEventListener('beforeprint',()=>{
+  injectPrintStyle();
+  if(pm==='b'){
+    sv=[];
+    document.querySelectorAll('input:not([type=radio]):not([type=checkbox]),textarea').forEach(e=>{
+      sv.push(e.value);
+      // clear all inputs including readonly totals — zeros must not appear on blank print
+      let v=e.value.replace(/,/g,'').trim();
+      if(!e.readOnly){
+        e.value='';
+      } else {
+        // clear readonly total fields if they show 0 or 0.00
+        if(v===''||v==='0'||v==='0.00'||parseFloat(v)===0) e.value='';
+      }
+    });
+  } else if(pm==='f'){
+    document.querySelectorAll('#billsB tr').forEach(r=>{
+      let no=r.querySelector('td input')?.value.trim();
+      let amt=r.querySelector('.ba')?.value;
+      if(!no&&(!amt||pa(amt)===0)) r.classList.add('ph');
+    });
+    document.querySelectorAll('#expB tr, #lsB tr').forEach(r=>{
+      let amt=r.querySelector('.ea,.la')?.value;
+      if(!amt||pa(amt)===0) r.classList.add('ph');
+    });
+  }
+});
+
+window.addEventListener('afterprint',()=>{
+  removePrintStyle();
+  if(pm==='b'){
+    let i=0;
+    document.querySelectorAll('input:not([type=radio]):not([type=checkbox]),textarea').forEach(e=>{
+      e.value=sv[i]||'';
+      i++;
+    });
+    sv=[];
+  }
+  document.querySelectorAll('.ph').forEach(e=>e.classList.remove('ph'));
+  pm='n';
+  document.title='Claim Form Part A — Ericson Insurance TPA';
+});
+
+/* ── RESET ── */
+function resetForm(){
+  document.getElementById('rstModal').style.display='flex';
+}
+function closeRstModal(){
+  document.getElementById('rstModal').style.display='none';
+}
+
+/* ── Helper: is this input a date field? ── */
+function isDateInput(el){
+  return el.classList.contains('dd')||el.classList.contains('mm')||
+         el.classList.contains('yy')||el.classList.contains('hh');
+}
+/* ── Helper: is this input an amount field? ── */
+function isAmtInput(el){
+  return el.classList.contains('ea')||el.classList.contains('la')||
+         el.classList.contains('ba')||
+         el.closest('.amt')!==null;
+}
+
+function doReset(mode){
+  closeRstModal();
+
+  if(mode==='continuity'){
+    /* CONTINUITY: snapshot -> wipe -> restore all except dates & amounts */
+
+    var _sv=[];
+    document.querySelectorAll('input:not([type=radio]):not([type=checkbox]):not([readonly])').forEach(function(el){
+      if(el.id==='cpick'||el.id==='chex'||el.id==='claimRef'||el.id==='srNo') return;
+      var isDate=el.classList.contains('dd')||el.classList.contains('mm')||el.classList.contains('yy')||el.classList.contains('hh');
+      var isAmt=el.classList.contains('ea')||el.classList.contains('la')||el.classList.contains('ba')||!!el.closest('.amt');
+      if(!isDate&&!isAmt) _sv.push({el:el,v:el.value});
+    });
+
+    var _sc=[];
+    document.querySelectorAll('input[type=radio],input[type=checkbox]').forEach(function(el){
+      _sc.push({el:el,c:el.checked});
+    });
+
+    document.querySelectorAll('input:not([readonly]),textarea').forEach(function(e){
+      if(e.type!=='radio'&&e.type!=='checkbox') e.value='';
+    });
+    document.querySelectorAll('input[type=radio],input[type=checkbox]').forEach(function(e){e.checked=false;});
+    var _rl=document.querySelector('.refline input'); if(_rl) _rl.value='';
+    init();
+
+    _sv.forEach(function(o){try{o.el.value=o.v;}catch(e){}});
+    _sc.forEach(function(o){try{o.el.checked=o.c;}catch(e){}});
+
+    ['expTot','lsTot','billsTot'].forEach(function(id){var e=document.getElementById(id);if(e)e.value='';});
+    ['claimRef','srNo'].forEach(function(id){var e=document.getElementById(id);if(e)e.value='';});
+
+    stampInputStyles();
+
+  } else if(mode==='full'){
+    /* ── FULL RESET: wipe every single field ── */
+    document.querySelectorAll('input:not([readonly]),textarea').forEach(e=>{
+      if(e.type!=='radio'&&e.type!=='checkbox') e.value='';
+    });
+    document.querySelectorAll('input[type=radio],input[type=checkbox]').forEach(e=>e.checked=false);
+    ['omc','pvc','hl4','dom','mlc'].forEach(n=>{
+      let e=document.querySelector('input[name="'+n+'"][value="no"]');if(e)e.checked=true;
+    });
+    document.querySelector('.refline input') && (document.querySelector('.refline input').value='');
+    init();
+    stampInputStyles();
+
+  } else if(mode==='blank'){
+    /* ── BLANK FORM: full reset then immediately print blank ── */
+    document.querySelectorAll('input:not([readonly]),textarea').forEach(e=>{
+      if(e.type!=='radio'&&e.type!=='checkbox') e.value='';
+    });
+    document.querySelectorAll('input[type=radio],input[type=checkbox]').forEach(e=>e.checked=false);
+    ['omc','pvc','hl4','dom','mlc'].forEach(n=>{
+      let e=document.querySelector('input[name="'+n+'"][value="no"]');if(e)e.checked=true;
+    });
+    document.querySelector('.refline input') && (document.querySelector('.refline input').value='');
+    init();
+    stampInputStyles();
+    // Trigger blank print
+    setTimeout(function(){ printBlank(); }, 150);
+  }
+}
+
+/* ── INIT ── */
+function init(){
+  document.getElementById('expB').innerHTML='';
+  ['PRE-HOSPITALISATION','HOSPITALISATION','POST-HOSPITALISATION','OPD / CHECK-UP','AMBULANCE','OTHERS'].forEach(d=>addE(d));
+  document.getElementById('lsB').innerHTML='';
+  ['DAILY CASH BENEFIT','SURGICAL BENEFIT','CRITICAL ILLNESS','CONVALESCENCE','PRE / POST BENEFIT','OTHERS'].forEach(d=>addL(d));
+  document.getElementById('billsB').innerHTML='';
+  ['MAIN HOSPITAL BILL','PRE-HOSPITALISATION','POST-HOSPITALISATION','PHARMACY / MEDICINES','DIAGNOSTIC TESTS','AMBULANCE'].forEach(d=>addB(d));
+}
+
+/* ── STYLE PANEL ── */
+var SWATCHES=[
+  {c:'#131e2c',n:'Dark Navy'},  {c:'#1a4f80',n:'Royal Blue'},
+  {c:'#1a6faa',n:'Steel Blue'}, {c:'#0a6640',n:'Forest Green'},
+  {c:'#7b1f1f',n:'Deep Red'},   {c:'#6a1e8c',n:'Purple'},
+  {c:'#8c4a00',n:'Brown'},      {c:'#b07a00',n:'Gold'},
+  {c:'#1a1a1a',n:'Near Black'}, {c:'#2d5a2d',n:'Dark Green'},
+  {c:'#4a4a4a',n:'Charcoal'},   {c:'#00008b',n:'DarkBlue'},
+];
+function buildSwatches(){
+  let c=document.getElementById('swatches');
+  SWATCHES.forEach(s=>{
+    let d=document.createElement('div');
+    d.className='sw'; d.title=s.n;
+    d.style.background=s.c;
+    d.onclick=()=>applyColor(s.c,d);
+    c.appendChild(d);
+  });
+  // mark first as active (default)
+  c.firstChild.classList.add('active');
+}
+/* ── Apply style directly to every form input ── */
+function stampInputStyles(){
+  let col=getComputedStyle(document.documentElement).getPropertyValue('--user-color').trim()||'#131e2c';
+  let wt =getComputedStyle(document.documentElement).getPropertyValue('--user-weight').trim()||'600';
+  let fs =getComputedStyle(document.documentElement).getPropertyValue('--user-size').trim()||'12px';
+  let ls =getComputedStyle(document.documentElement).getPropertyValue('--user-spacing').trim()||'0.3px';
+  let sel='.inf input,.amt input,.db input,.hh,.tbl td input,.otxt,.refline input,.ucell input';
+  document.querySelectorAll(sel).forEach(function(el){
+    if(el.id==='cpick'||el.id==='chex') return;
+    el.style.color=col; el.style.fontWeight=wt; el.style.fontSize=fs; el.style.letterSpacing=ls;
+  });
+  document.querySelectorAll('.sbody input[type=text]:not([readonly])').forEach(function(el){
+    if(el.id==='cpick'||el.id==='chex') return;
+    el.style.color=col; el.style.fontWeight=wt; el.style.fontSize=fs; el.style.letterSpacing=ls;
+  });
+}
+function applyFontSize(v){
+  v=parseFloat(v);
+  document.documentElement.style.setProperty('--user-size',v+'px');
+  let pct=((v-8)/(18-8)*100).toFixed(1)+'%';
+  let sl=document.getElementById('fsSlider'); if(sl) sl.style.setProperty('--pct',pct);
+  let vl=document.getElementById('fsVal'); if(vl) vl.textContent=v+'px';
+  stampInputStyles(); updatePreview();
+}
+function applyLetterSpacing(v){
+  v=parseFloat(v);
+  document.documentElement.style.setProperty('--user-spacing',v+'px');
+  let pct=(v/4*100).toFixed(1)+'%';
+  let sl=document.getElementById('lsSlider'); if(sl) sl.style.setProperty('--pct',pct);
+  let vl=document.getElementById('lsVal'); if(vl) vl.textContent=v.toFixed(1)+'px';
+  stampInputStyles(); updatePreview();
+}
+
+function applyColor(hex,swEl){
+  hex=hex.trim();
+  if(hex.length===4) hex='#'+hex[1]+hex[1]+hex[2]+hex[2]+hex[3]+hex[3];
+  if(!/^#[0-9a-fA-F]{6}$/.test(hex)) return;
+  document.documentElement.style.setProperty('--user-color',hex);
+  document.getElementById('cpick').value=hex;
+  document.getElementById('chex').value=hex;
+  stampInputStyles();
+  updatePreview();
+  document.querySelectorAll('.sw').forEach(s=>s.classList.remove('active'));
+  if(swEl) swEl.classList.add('active');
+  else{
+    document.querySelectorAll('.sw').forEach(s=>{
+      if(s.style.background===hex||rgbToHex(s.style.background)===hex.toLowerCase()) s.classList.add('active');
+    });
+  }
+}
+function hexInput(v){
+  v=v.trim();
+  if(v.length===6&&!v.startsWith('#')) v='#'+v;
+  if(/^#[0-9a-fA-F]{6}$/.test(v)){
+    document.getElementById('cpick').value=v;
+    applyColor(v,null);
+  }
+}
+function rgbToHex(rgb){
+  let m=rgb.match(/\d+/g);
+  if(!m||m.length<3) return '';
+  return '#'+m.slice(0,3).map(x=>parseInt(x).toString(16).padStart(2,'0')).join('');
+}
+function applyWeight(w,btn){
+  document.documentElement.style.setProperty('--user-weight',w);
+  document.querySelectorAll('.wbtn').forEach(b=>b.classList.remove('active'));
+  if(btn) btn.classList.add('active');
+  stampInputStyles();
+  updatePreview();
+}
+function updatePreview(){
+  let p=document.getElementById('sprev');
+  if(!p) return;
+  let c=getComputedStyle(document.documentElement).getPropertyValue('--user-color').trim()||'#131e2c';
+  let w=getComputedStyle(document.documentElement).getPropertyValue('--user-weight').trim()||'600';
+  let fs=getComputedStyle(document.documentElement).getPropertyValue('--user-size').trim()||'12px';
+  let ls=getComputedStyle(document.documentElement).getPropertyValue('--user-spacing').trim()||'0.3px';
+  p.style.color=c; p.style.fontWeight=w; p.style.fontSize=fs; p.style.letterSpacing=ls;
+}
+function resetStyle(){
+  applyColor('#131e2c', document.querySelector('.sw'));
+  applyWeight('600', document.querySelector('.wbtn[data-w="600"]'));
+  let fsl=document.getElementById('fsSlider'); if(fsl){fsl.value=12; applyFontSize(12);}
+  let lsl=document.getElementById('lsSlider'); if(lsl){lsl.value=0.3; applyLetterSpacing(0.3);}
+  stampInputStyles();
+}
+
+/* ── TOGGLEABLE RADIO BUTTONS ── */
+function setupToggleRadio(){
+  document.addEventListener('mousedown',function(e){
+    if(e.target.type!=='radio') return;
+    e.target._was=e.target.checked;
+  });
+  document.addEventListener('click',function(e){
+    if(e.target.type!=='radio') return;
+    if(e.target._was){ e.target.checked=false; e.target._was=false; }
+  });
+}
+init();uc();setupDateNav();setupToggleRadio();stampInputStyles();
+
+</script>
+<!-- RESET MODAL -->
+<div id="rstModal" style="display:none;position:fixed;inset:0;background:rgba(10,25,55,.55);z-index:9999;align-items:center;justify-content:center;">
+  <div style="background:#fff;border-radius:8px;padding:22px 26px;max-width:460px;width:92%;box-shadow:0 16px 48px rgba(10,30,70,.35);font-family:'DM Sans',sans-serif;">
+    <div style="font-size:15px;font-weight:800;color:var(--primary-dark);margin-bottom:4px;">&#8634; Reset / New Form</div>
+    <div style="font-size:9.5px;color:var(--grey);margin-bottom:14px;line-height:1.6;">Choose an option:</div>
+
+    <!-- Option 1: Continuity -->
+    <div onclick="doReset('continuity')" style="cursor:pointer;border:2px solid var(--primary-light);border-radius:6px;padding:11px 14px;margin-bottom:9px;background:#f4f9ff;transition:background .15s;" onmouseover="this.style.background='#daeeff'" onmouseout="this.style.background='#f4f9ff'">
+      <div style="font-size:11px;font-weight:800;color:var(--primary-dark);margin-bottom:3px;">&#128260; Continue with Same Information</div>
+      <div style="font-size:8.5px;color:var(--grey);line-height:1.55;">
+        <b style="color:var(--primary-dark);">Keeps all fields</b> — names, addresses, policy details, bank details, all radios &amp; selections.<br>
+        <b style="color:#c0392b;">Clears only:</b> All dates &middot; All amount figures &middot; Claim Ref &amp; Sr. No. — ready for next claim entry.
+      </div>
+    </div>
+
+    <!-- Option 2: Full reset new user -->
+    <div onclick="doReset('full')" style="cursor:pointer;border:2px solid #e07b00;border-radius:6px;padding:11px 14px;margin-bottom:9px;background:#fffaf4;transition:background .15s;" onmouseover="this.style.background='#ffecd4'" onmouseout="this.style.background='#fffaf4'">
+      <div style="font-size:11px;font-weight:800;color:#b86000;margin-bottom:3px;">&#128100; New User — Complete Reset</div>
+      <div style="font-size:8.5px;color:var(--grey);line-height:1.55;">
+        Clears <b>every field</b> in the entire form for a completely different insured person or fresh start.
+      </div>
+    </div>
+
+    <!-- Option 3: Blank print -->
+    <div onclick="doReset('blank')" style="cursor:pointer;border:2px solid #2e7d32;border-radius:6px;padding:11px 14px;margin-bottom:16px;background:#f4fbf4;transition:background .15s;" onmouseover="this.style.background='#d4f0d4'" onmouseout="this.style.background='#f4fbf4'">
+      <div style="font-size:11px;font-weight:800;color:#2e7d32;margin-bottom:3px;">&#128203; Generate Blank Form for Manual Filling</div>
+      <div style="font-size:8.5px;color:var(--grey);line-height:1.55;">
+        Clears all fields and immediately opens the print dialog — print a clean blank form to fill in by hand.
+      </div>
+    </div>
+
+    <button onclick="closeRstModal()" style="width:100%;border:1.5px solid var(--line);background:#f4f7fc;border-radius:4px;padding:8px;font-size:10px;font-weight:700;font-family:inherit;cursor:pointer;color:var(--grey);">Cancel</button>
+  </div>
+</div>
+
+</body>
+</html>
